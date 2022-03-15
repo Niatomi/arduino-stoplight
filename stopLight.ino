@@ -22,33 +22,37 @@ void setup() {
 }
 
 void loop() {
+  
   boolean button = digitalRead(BUTTON);
   
-  if (button == true ) {
-    
-    for (int i = 4; i != 0; i--) {
-      digitalWrite(GREEN, 0);
-      delay(500);
-      digitalWrite(GREEN, 1);
-      delay(500);
-    }
-    
+  if (button) stopLightCycle();
+
+}
+
+void stopLightCycle() {
+
+  for (int i = 4; i != 0; i--) {
     digitalWrite(GREEN, 0);
-    digitalWrite(YELLOW, 1);
-    delay(1000);
-    digitalWrite(YELLOW, 0);
-    delay(1000);
-    digitalWrite(RED, 1);
-    
-    delay(timeWait);
-
-    digitalWrite(YELLOW, 1);
-    delay(1000);
-    digitalWrite(YELLOW, 0);
-    digitalWrite(RED, 0);
+    delay(500);
     digitalWrite(GREEN, 1);
+    delay(500);
+  }
+    
+  digitalWrite(GREEN, 0);
+  digitalWrite(YELLOW, 1);
+  delay(1000);
+  digitalWrite(YELLOW, 0);
+  delay(1000);
+  digitalWrite(RED, 1);
+  
+  delay(timeWait);
 
-    delay(remainingTime);
-  } 
+  digitalWrite(YELLOW, 1);
+  delay(1000);
+  digitalWrite(YELLOW, 0);
+  digitalWrite(RED, 0);
+  digitalWrite(GREEN, 1);
 
+  delay(remainingTime);
+  
 }
